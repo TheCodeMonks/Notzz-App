@@ -7,7 +7,25 @@
 
     <fragment
         android:id="@+id/notesFragment"
-        android:name="www.groomer.nottzapp.Notes.NotesFragment"
+        android:name="www.groomer.nottzapp.UI.AddNotes.Notes.NotesFragment"
         android:label="notes_fragment"
-        tools:layout="@layout/notes_fragment" />
+        tools:layout="@layout/notes_fragment">
+        <action
+            android:id="@+id/action_notesFragment_to_addNotesFragment"
+            app:destination="@id/addNotesFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNotesFragment"
+        android:name="www.groomer.nottzapp.UI.AddNotes.AddNotesFragment"
+        android:label="AddNotesFragment"
+        tools:layout="@layout/add_notes_fragment">
+        <action
+            android:id="@+id/action_addNotesFragment_to_notesFragment"
+            app:destination="@id/notesFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
 </navigation>

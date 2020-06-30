@@ -1,4 +1,4 @@
-package www.groomer.nottzapp.Notes.ViewModels
+package www.groomer.nottzapp.UI.AddNotes.Notes.ViewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,7 +10,11 @@ class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel() {
 
 
     // save notes
-    fun saveNotes(notes: Notes) = viewModelScope.launch {
+    fun insertNotes(taskName: String, taskDesc: String) = viewModelScope.launch {
+        val notes = Notes(
+            title = taskName,
+            description = taskDesc
+        )
         notesRepo.insert(notes)
     }
 
@@ -19,20 +23,13 @@ class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel() {
 
 
     // delete notes
-    fun deleteNotes(notes: Notes) = viewModelScope.launch {
+    fun deleteNotes(taskID: Int, taskName: String, taskDesc: String) = viewModelScope.launch {
+        val notes = Notes(
+            id = taskID,
+            title = taskName,
+            description = taskDesc
+        )
         notesRepo.deleteNotes(notes)
-    }
-
-
-
-    fun inserNotes(taskName: String, taskDesc: String) {
-        viewModelScope.launch {
-            val notes = Notes(
-                title = taskName,
-                description = taskDesc
-            )
-            notesRepo.insert(notes)
-        }
     }
 
 }

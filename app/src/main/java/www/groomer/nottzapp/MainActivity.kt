@@ -1,12 +1,12 @@
 package www.groomer.nottzapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import www.groomer.nottzapp.DB.NotesDatabase
-import www.groomer.nottzapp.Notes.ViewModelProviders.NewsViewModelProviderFactory
-import www.groomer.nottzapp.Notes.ViewModels.NotesViewModel
 import www.groomer.nottzapp.Repo.NotesRepo
+import www.groomer.nottzapp.UI.AddNotes.Notes.ViewModelProviders.NewsViewModelProviderFactory
+import www.groomer.nottzapp.UI.AddNotes.Notes.ViewModels.NotesViewModel
 
 class MainActivity : AppCompatActivity() {
 
