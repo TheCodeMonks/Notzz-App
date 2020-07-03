@@ -15,6 +15,9 @@
             app:destination="@id/addNotesFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_notesFragment_to_notesDetailsFragment"
+            app:destination="@id/notesDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNotesFragment"
@@ -26,6 +29,18 @@
             app:destination="@id/notesFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesDetailsFragment"
+        android:name="www.groomer.nottzapp.UI.AddNotes.NotesDetails.NotesDetailsFragment"
+        android:label="NotesDetailsFragment"
+        tools:layout="@layout/fragment_notes_details">
+        <argument
+            android:name="notes"
+            app:argType="www.groomer.nottzapp.Model.Notes" />
+        <action
+            android:id="@+id/action_notesDetailsFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
     </fragment>
 
 </navigation>

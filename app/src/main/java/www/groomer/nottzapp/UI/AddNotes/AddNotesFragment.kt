@@ -16,14 +16,16 @@ class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // init viewModel
         viewModel = (activity as MainActivity).viewModel
 
 
-
+        // save notes to db
         btn_save_notes.setOnClickListener {
             val title = notes_title_et.text.toString().trim()
             val description = notes_desc_et.text.toString().trim()
 
+            // check whether both title & desc is not empty
             when {
                 title.isEmpty() -> {
                     requireActivity().toast("Your title is empty")
@@ -33,8 +35,9 @@ class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {
                 }
                 else -> {
                     viewModel.insertNotes(title, description).also {
-                        requireActivity().toast("Note saved successfully")
-                        findNavController().navigate(R.id.action_addNotesFragment_to_notesFragment)
+                        requireActivity().toast("Note saved successfully").also {
+                            findNavController().navigate(R.id.action_addNotesFragment_to_notesFragment)
+                        }
                     }
                 }
             }

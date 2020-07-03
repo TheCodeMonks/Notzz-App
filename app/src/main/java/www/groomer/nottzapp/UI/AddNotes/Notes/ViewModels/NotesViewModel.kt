@@ -18,6 +18,16 @@ class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel() {
         notesRepo.insert(notes)
     }
 
+    // save notes
+    fun updateNotes(id: Int, taskName: String, taskDesc: String) = viewModelScope.launch {
+        val notes = Notes(
+            id = id,
+            title = taskName,
+            description = taskDesc
+        )
+        notesRepo.update(notes)
+    }
+
     // get saved notes
     fun getSavedNotes() = notesRepo.getSavedNotes()
 

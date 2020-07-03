@@ -14,7 +14,6 @@ import www.groomer.nottzapp.Adapter.NotesAdapter
 import www.groomer.nottzapp.MainActivity
 import www.groomer.nottzapp.R
 import www.groomer.nottzapp.UI.AddNotes.Notes.ViewModels.NotesViewModel
-import www.groomer.nottzapp.utils.toast
 
 class NotesFragment : Fragment(R.layout.notes_fragment) {
 
@@ -28,6 +27,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
 
         setUpRV()
 
+        // onclick navigate to add notes
         btn_add_notes.setOnClickListener {
             findNavController().navigate(R.id.action_notesFragment_to_addNotesFragment)
         }
@@ -38,9 +38,17 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         })
 
 
+        // onclick navigate to add notes
         notesAdapter.setOnItemClickListener {
-            requireActivity().toast("Clicked  title ${it.title} this")
+            val bundle = Bundle().apply {
+                putSerializable("notes", it)
+            }
+            findNavController().navigate(
+                R.id.action_notesFragment_to_notesDetailsFragment,
+                bundle
+            )
         }
+
 
         // init item touch callback for swipe action
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
