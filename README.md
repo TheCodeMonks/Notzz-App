@@ -53,7 +53,7 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 
 ## Contribute
 If you want to contribute to this library, you're always welcome!
-See [Contributing Guidelines](CONTRIBUTING.md). 
+See [Contributing Guidelines](https://github.com/TheCodeMonks/Notzz-App/blob/master/CONTRIBUTION.md). 
 
 ## Contact
 Have an project? DM us at 👇
