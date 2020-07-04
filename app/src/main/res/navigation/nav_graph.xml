@@ -8,39 +8,43 @@
     <fragment
         android:id="@+id/notesFragment"
         android:name="www.groomer.nottzapp.UI.AddNotes.Notes.NotesFragment"
-        android:label="notes_fragment"
+        android:label="Notzz App"
         tools:layout="@layout/notes_fragment">
         <action
             android:id="@+id/action_notesFragment_to_addNotesFragment"
             app:destination="@id/addNotesFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_notesFragment_to_notesDetailsFragment"
-            app:destination="@id/notesDetailsFragment" />
+            app:destination="@id/notesDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/addNotesFragment"
         android:name="www.groomer.nottzapp.UI.AddNotes.AddNotesFragment"
-        android:label="AddNotesFragment"
+        android:label="Add Notes"
         tools:layout="@layout/add_notes_fragment">
         <action
             android:id="@+id/action_addNotesFragment_to_notesFragment"
             app:destination="@id/notesFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/notesDetailsFragment"
         android:name="www.groomer.nottzapp.UI.AddNotes.NotesDetails.NotesDetailsFragment"
-        android:label="NotesDetailsFragment"
+        android:label="Update Notes"
         tools:layout="@layout/fragment_notes_details">
         <argument
             android:name="notes"
             app:argType="www.groomer.nottzapp.Model.Notes" />
         <action
             android:id="@+id/action_notesDetailsFragment_to_notesFragment"
-            app:destination="@id/notesFragment" />
+            app:destination="@id/notesFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
 
 </navigation>
