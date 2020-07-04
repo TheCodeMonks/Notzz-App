@@ -7,7 +7,7 @@
 
 ***Try latest Notzz app apk from below 👇***
 
-[![Picto App](https://img.shields.io/badge/NotzzApp🌈-APK-black.svg?style=for-the-badge&logo=android)](https://github.com/TheCodeMonks/Notes-App/releases/tag/v1.0)
+[![Notzz-App](https://img.shields.io/badge/NotzzApp🌈-APK-black.svg?style=for-the-badge&logo=android)](https://github.com/TheCodeMonks/Notzz-App/blob/master/apk/Notzz.apk)
 
 
 
