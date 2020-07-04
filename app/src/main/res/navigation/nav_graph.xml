@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/notesFragment"
-        android:name="www.groomer.nottzapp.UI.AddNotes.Notes.NotesFragment"
+        android:name="thecodemonks.org.nottzapp.UI.AddNotes.Notes.NotesFragment"
         android:label="Notzz App"
         tools:layout="@layout/notes_fragment">
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/addNotesFragment"
-        android:name="www.groomer.nottzapp.UI.AddNotes.AddNotesFragment"
+        android:name="thecodemonks.org.nottzapp.UI.AddNotes.AddNotesFragment"
         android:label="Add Notes"
         tools:layout="@layout/add_notes_fragment">
         <action
@@ -34,17 +34,17 @@
     </fragment>
     <fragment
         android:id="@+id/notesDetailsFragment"
-        android:name="www.groomer.nottzapp.UI.AddNotes.NotesDetails.NotesDetailsFragment"
+        android:name="thecodemonks.org.nottzapp.UI.AddNotes.NotesDetails.NotesDetailsFragment"
         android:label="Update Notes"
         tools:layout="@layout/fragment_notes_details">
-        <argument
-            android:name="notes"
-            app:argType="www.groomer.nottzapp.Model.Notes" />
         <action
             android:id="@+id/action_notesDetailsFragment_to_notesFragment"
             app:destination="@id/notesFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="notes"
+            app:argType="thecodemonks.org.nottzapp.Model.Notes" />
     </fragment>
 
 </navigation>
