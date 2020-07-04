@@ -1,6 +1,6 @@
 ## Welcome Monk!, Thanks for making our community great.
 
-## What you can do
+### What you can do
 You can contribute us by filing issues, bugs and PRs.
 
 ### Contributing guidelines:
