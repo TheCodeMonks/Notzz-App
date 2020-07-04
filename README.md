@@ -26,7 +26,7 @@
 
 # Package Structure
     
-    www.spikeysanju.picto   # Root Package
+    thecodemonks.org.nottzapp   # Root Package
     .
     ├── data                # For data handling.
     │   ├── db              # Local Persistence Database. Room (SQLite) database
@@ -44,6 +44,7 @@
     
     
     ## Architecture
+    
 This app uses [***MVVM (Model View View-Model)***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
 
 ![](https://github.com/TheCodeMonks/Notes-App/blob/master/screenshots/ANDROID%20ROOM%20DB%20DIAGRAM.jpg)
