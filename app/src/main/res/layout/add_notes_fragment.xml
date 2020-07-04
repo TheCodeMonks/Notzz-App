@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/colorPrimary"
     tools:context=".UI.AddNotes.AddNotesFragment">
 
 
@@ -13,11 +14,11 @@
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="308dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/bg_edittext"
         android:hint="@string/title_hint"
         android:inputType="text"
-        android:textColor="@android:color/black"
+        android:textColorHint="@color/hint_color"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,10 +28,11 @@
         android:id="@+id/notes_desc_et"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_edittext"
         android:hint="@string/desc_hint"
-        android:inputType="text"
+        android:inputType="textCapSentences|textMultiLine"
+        android:textColorHint="@color/hint_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/notes_title_et" />
@@ -43,6 +45,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/save_notes_btn"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
