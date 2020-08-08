@@ -7,7 +7,7 @@
 
 ***Try latest Notzz app apk from below 👇***
 
-[![Picto App](https://img.shields.io/badge/NotzzApp🌈-APK-black.svg?style=for-the-badge&logo=android)](https://github.com/TheCodeMonks/Notes-App/releases/tag/v1.0)
+[![Notzz-App](https://img.shields.io/badge/NotzzApp🌈-APK-black.svg?style=for-the-badge&logo=android)](https://github.com/TheCodeMonks/Notzz-App/blob/master/apk/Notzz.apk)
 
 
 
@@ -53,7 +53,7 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 
 ## Contribute
 If you want to contribute to this library, you're always welcome!
-See [Contributing Guidelines](CONTRIBUTING.md). 
+See [Contributing Guidelines](https://github.com/TheCodeMonks/Notzz-App/blob/master/CONTRIBUTION.md). 
 
 ## Contact
 Have an project? DM us at 👇
