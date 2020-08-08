@@ -37,7 +37,6 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
             notesAdapter.differ.submitList(notes)
         })
 
-
         // onclick navigate to add notes
         notesAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
@@ -48,7 +47,6 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                 bundle
             )
         }
-
 
         // init item touch callback for swipe action
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
@@ -96,6 +94,4 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
             layoutManager = LinearLayoutManager(activity)
         }
     }
-
-
 }

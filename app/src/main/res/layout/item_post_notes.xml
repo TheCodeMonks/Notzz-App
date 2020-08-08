@@ -44,7 +44,7 @@
             app:layout_constraintHorizontal_bias="0.016"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_notes_title"
-            tools:text="This is demo test" />
+            tools:text="@string/desc_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
