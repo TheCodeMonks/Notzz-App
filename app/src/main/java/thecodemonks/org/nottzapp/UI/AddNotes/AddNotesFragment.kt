@@ -1,13 +1,13 @@
-package thecodemonks.org.nottzapp.UI.AddNotes
+package thecodemonks.org.nottzapp.UI.ui.AddNotes
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.add_notes_fragment.*
-import thecodemonks.org.nottzapp.MainActivity
 import thecodemonks.org.nottzapp.R
-import thecodemonks.org.nottzapp.UI.AddNotes.Notes.ViewModels.NotesViewModel
+import thecodemonks.org.nottzapp.UI.ui.Notes.ViewModels.NotesViewModel
+import thecodemonks.org.nottzapp.app.MainActivity
 import thecodemonks.org.nottzapp.utils.toast
 
 class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {

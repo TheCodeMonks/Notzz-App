@@ -1,8 +1,8 @@
-package thecodemonks.org.nottzapp.DB
+package thecodemonks.org.nottzapp.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import thecodemonks.org.nottzapp.Model.Notes
+import thecodemonks.org.nottzapp.model.Notes
 
 
 @Dao

@@ -3,41 +3,62 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimary"
     android:fitsSystemWindows="true">
 
-
     <EditText
         android:id="@+id/edit_notes_title_et"
-        style="@style/EditTextStyle"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/bg_edittext"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:fontFamily="@font/montserrat_bold"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="100"
         android:hint="@string/title_hint"
-        android:inputType="text"
+        android:maxLines="3"
+        android:padding="10dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:textColor="@android:color/white"
         android:textColorHint="@color/hint_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/edit_notes_desc_et"
-        style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_edittext"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:maxLength="240"
+        android:maxLines="10"
         android:hint="@string/desc_hint"
         android:inputType="textCapSentences|textMultiLine"
+        android:padding="10dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textColor="@android:color/white"
         android:textColorHint="@color/hint_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_notes_title_et" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_notes_title_et"
+        tools:ignore="Autofill" />
+
 
     <Button
         android:id="@+id/update_btn_save_notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"

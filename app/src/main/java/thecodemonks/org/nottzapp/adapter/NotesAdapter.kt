@@ -1,4 +1,4 @@
-package thecodemonks.org.nottzapp.Adapter
+package thecodemonks.org.nottzapp.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_post_notes.view.*
-import thecodemonks.org.nottzapp.Model.Notes
 import thecodemonks.org.nottzapp.R
+import thecodemonks.org.nottzapp.model.Notes
 
 class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesVH>() {
 

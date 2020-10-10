@@ -1,4 +1,4 @@
-package thecodemonks.org.nottzapp
+package thecodemonks.org.nottzapp.app
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,10 +6,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import thecodemonks.org.nottzapp.DB.NotesDatabase
-import thecodemonks.org.nottzapp.Repo.NotesRepo
-import thecodemonks.org.nottzapp.UI.AddNotes.Notes.ViewModelProviders.NewsViewModelProviderFactory
-import thecodemonks.org.nottzapp.UI.AddNotes.Notes.ViewModels.NotesViewModel
+import thecodemonks.org.nottzapp.R
+import thecodemonks.org.nottzapp.UI.ui.Notes.ViewModelProviders.TodoViewModelProviderFactory
+import thecodemonks.org.nottzapp.UI.ui.Notes.ViewModels.NotesViewModel
+import thecodemonks.org.nottzapp.db.NotesDatabase
+import thecodemonks.org.nottzapp.repo.NotesRepo
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         // init viewModelProvider
         val newsRepository = NotesRepo(NotesDatabase(this))
-        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+        val viewModelProviderFactory = TodoViewModelProviderFactory(newsRepository)
         viewModel =
             ViewModelProvider(this, viewModelProviderFactory).get(NotesViewModel::class.java)
 

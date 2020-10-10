@@ -1,4 +1,4 @@
-package thecodemonks.org.nottzapp.UI.AddNotes.NotesDetails
+package thecodemonks.org.nottzapp.UI.ui.NotesDetails
 
 import android.os.Bundle
 import android.view.View
@@ -7,9 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_notes_details.*
-import thecodemonks.org.nottzapp.MainActivity
 import thecodemonks.org.nottzapp.R
-import thecodemonks.org.nottzapp.UI.AddNotes.Notes.ViewModels.NotesViewModel
+import thecodemonks.org.nottzapp.UI.ui.Notes.ViewModels.NotesViewModel
+import thecodemonks.org.nottzapp.app.MainActivity
 
 class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
 

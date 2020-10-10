@@ -1,10 +1,10 @@
-package thecodemonks.org.nottzapp.DB
+package thecodemonks.org.nottzapp.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import thecodemonks.org.nottzapp.Model.Notes
+import thecodemonks.org.nottzapp.model.Notes
 
 @Database(
     entities = [Notes::class],

@@ -1,4 +1,4 @@
-package thecodemonks.org.nottzapp.Model
+package thecodemonks.org.nottzapp.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
