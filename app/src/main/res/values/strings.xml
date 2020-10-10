@@ -1,9 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Nottz App</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_hint">Title</string>
-    <string name="desc_hint">Description</string>
+    <string name="desc_hint" tools:ignore="TypographyEllipsis">Type something...</string>
     <string name="save_notes_btn">Save notes</string>
     <string name="desc_text">This is demo test</string>
 </resources>
