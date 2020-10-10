@@ -1,10 +1,10 @@
-package thecodemonks.org.nottzapp.UI.AddNotes.Notes.ViewModels
+package thecodemonks.org.nottzapp.UI.ui.Notes.ViewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import thecodemonks.org.nottzapp.Model.Notes
-import thecodemonks.org.nottzapp.Repo.NotesRepo
+import thecodemonks.org.nottzapp.model.Notes
+import thecodemonks.org.nottzapp.repo.NotesRepo
 
 class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel() {
 

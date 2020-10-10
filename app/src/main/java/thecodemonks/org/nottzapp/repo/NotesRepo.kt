@@ -1,7 +1,7 @@
-package thecodemonks.org.nottzapp.Repo
+package thecodemonks.org.nottzapp.repo
 
-import thecodemonks.org.nottzapp.DB.NotesDatabase
-import thecodemonks.org.nottzapp.Model.Notes
+import thecodemonks.org.nottzapp.db.NotesDatabase
+import thecodemonks.org.nottzapp.model.Notes
 
 
 class NotesRepo(private val db: NotesDatabase){

@@ -1,4 +1,4 @@
-package thecodemonks.org.nottzapp.UI.AddNotes.Notes
+package thecodemonks.org.nottzapp.UI.ui.Notes
 
 import android.os.Bundle
 import android.view.View
@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.notes_fragment.*
-import thecodemonks.org.nottzapp.Adapter.NotesAdapter
-import thecodemonks.org.nottzapp.MainActivity
 import thecodemonks.org.nottzapp.R
-import thecodemonks.org.nottzapp.UI.AddNotes.Notes.ViewModels.NotesViewModel
+import thecodemonks.org.nottzapp.UI.ui.Notes.ViewModels.NotesViewModel
+import thecodemonks.org.nottzapp.adapter.NotesAdapter
+import thecodemonks.org.nottzapp.app.MainActivity
 
 class NotesFragment : Fragment(R.layout.notes_fragment) {
 
