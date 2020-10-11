@@ -15,7 +15,6 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesVH>() {
 
     inner class NotesVH(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-
     private val differCallback = object : DiffUtil.ItemCallback<Notes>() {
         override fun areItemsTheSame(oldItem: Notes, newItem: Notes): Boolean {
             return oldItem.id == newItem.id
@@ -26,7 +25,6 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesVH>() {
             return oldItem == newItem
         }
     }
-
 
     val differ = AsyncListDiffer(this, differCallback)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesVH {
@@ -60,11 +58,9 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesVH>() {
 
     }
 
-
     // on item click listener
     private var onItemClickListener: ((Notes) -> Unit)? = null
     fun setOnItemClickListener(listener: (Notes) -> Unit) {
         onItemClickListener = listener
     }
-
 }

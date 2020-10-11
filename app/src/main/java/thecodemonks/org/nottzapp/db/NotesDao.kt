@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import thecodemonks.org.nottzapp.model.Notes
 
-
 @Dao
 interface NotesDao {
 
@@ -16,11 +15,9 @@ interface NotesDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateNotes(notes: Notes)
 
-
     // get all notes from db
     @Query("SELECT * FROM notes")
     fun getNotes(): LiveData<List<Notes>>
-
 
     // delete notes from db
     @Delete

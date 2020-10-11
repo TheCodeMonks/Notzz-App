@@ -17,5 +17,4 @@ class NotesRepo(private val db: NotesDatabase){
 
     // delete article
     suspend fun deleteNotes(notes: Notes) = db.getNotesDao().deleteNotes(notes)
-
 }
