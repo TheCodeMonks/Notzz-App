@@ -25,14 +25,14 @@ class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {
             // check whether both title & desc is not empty
             when {
                 title.isEmpty() -> {
-                    requireActivity().toast("Your title is empty")
+                    requireActivity().toast(getString(R.string.empty_title_msg))
                 }
                 description.isEmpty() -> {
-                    requireActivity().toast("Your description is empty")
+                    requireActivity().toast(getString(R.string.empty_desc_msg))
                 }
                 else -> {
                     viewModel.insertNotes(title, description).also {
-                        requireActivity().toast("Note saved successfully").also {
+                        requireActivity().toast(getString(R.string.note_saved_msg)).also {
                             findNavController().navigate(R.id.action_addNotesFragment_to_notesFragment)
                         }
                     }

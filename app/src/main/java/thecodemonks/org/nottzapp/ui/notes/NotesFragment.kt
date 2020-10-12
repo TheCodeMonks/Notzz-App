@@ -68,7 +68,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                     notes.title.toString(),
                     notes.description.toString()
                 )
-                Snackbar.make(view, "Successfully deleted notes", Snackbar.LENGTH_LONG).apply {
+                Snackbar.make(view, getString(R.string.note_deleted_msg), Snackbar.LENGTH_LONG).apply {
                     setAction("Undo") {
                         viewModel.insertNotes(notes.title.toString(), notes.description.toString())
                     }

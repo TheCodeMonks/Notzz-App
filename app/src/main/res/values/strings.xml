@@ -6,4 +6,9 @@
     <string name="desc_hint" tools:ignore="TypographyEllipsis">Type something...</string>
     <string name="save_notes_btn">Save notes</string>
     <string name="desc_text">This is demo test</string>
+    <string name="empty_title_msg">Your title is empty</string>
+    <string name="empty_desc_msg">Your description is empty</string>
+    <string name="note_saved_msg">Note saved successfully</string>
+    <string name="note_updated_msg">Note updated successfully!</string>
+    <string name="note_deleted_msg">Successfully deleted notes</string>
 </resources>

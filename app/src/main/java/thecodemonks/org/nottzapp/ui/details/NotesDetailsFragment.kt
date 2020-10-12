@@ -34,7 +34,7 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
 
             viewModel.updateNotes(id, title, description).also {
                 findNavController().navigate(R.id.action_notesDetailsFragment_to_notesFragment)
-                Toast.makeText(activity, "Note updated successfully!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.note_updated_msg), Toast.LENGTH_SHORT).show()
             }
         }
     }
