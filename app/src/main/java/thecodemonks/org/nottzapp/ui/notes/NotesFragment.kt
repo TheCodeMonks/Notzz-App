@@ -13,7 +13,6 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.notes_fragment.*
 import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.adapter.NotesAdapter
-import thecodemonks.org.nottzapp.app.MainActivity
 
 class NotesFragment : Fragment(R.layout.notes_fragment) {
 
@@ -68,12 +67,16 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                     notes.title.toString(),
                     notes.description.toString()
                 )
-                Snackbar.make(view, getString(R.string.note_deleted_msg), Snackbar.LENGTH_LONG).apply {
-                    setAction("Undo") {
-                        viewModel.insertNotes(notes.title.toString(), notes.description.toString())
+                Snackbar.make(view, getString(R.string.note_deleted_msg), Snackbar.LENGTH_LONG)
+                    .apply {
+                        setAction(getString(R.string.undo)) {
+                            viewModel.insertNotes(
+                                notes.title.toString(),
+                                notes.description.toString()
+                            )
+                        }
+                        show()
                     }
-                    show()
-                }
             }
         }
 

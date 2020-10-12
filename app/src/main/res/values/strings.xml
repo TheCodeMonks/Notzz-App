@@ -11,4 +11,5 @@
     <string name="note_saved_msg">Note saved successfully</string>
     <string name="note_updated_msg">Note updated successfully!</string>
     <string name="note_deleted_msg">Successfully deleted notes</string>
+    <string name="undo">Undo</string>
 </resources>
