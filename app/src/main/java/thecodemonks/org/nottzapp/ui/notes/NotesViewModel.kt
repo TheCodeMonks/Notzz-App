@@ -1,4 +1,4 @@
-package thecodemonks.org.nottzapp.UI.ui.Notes.ViewModels
+package thecodemonks.org.nottzapp.ui.notes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,7 +7,6 @@ import thecodemonks.org.nottzapp.model.Notes
 import thecodemonks.org.nottzapp.repo.NotesRepo
 
 class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel() {
-
 
     // save notes
     fun insertNotes(taskName: String, taskDesc: String) = viewModelScope.launch {
@@ -31,7 +30,6 @@ class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel() {
     // get saved notes
     fun getSavedNotes() = notesRepo.getSavedNotes()
 
-
     // delete notes
     fun deleteNotes(taskID: Int, taskName: String, taskDesc: String) = viewModelScope.launch {
         val notes = Notes(
@@ -41,5 +39,4 @@ class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel() {
         )
         notesRepo.deleteNotes(notes)
     }
-
 }
