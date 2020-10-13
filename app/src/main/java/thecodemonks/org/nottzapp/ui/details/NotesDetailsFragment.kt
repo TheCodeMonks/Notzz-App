@@ -1,26 +1,23 @@
-package thecodemonks.org.nottzapp.UI.ui.NotesDetails
+package thecodemonks.org.nottzapp.ui.details
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_notes_details.*
 import thecodemonks.org.nottzapp.R
-import thecodemonks.org.nottzapp.UI.ui.Notes.ViewModels.NotesViewModel
-import thecodemonks.org.nottzapp.app.MainActivity
+import thecodemonks.org.nottzapp.ui.notes.NotesViewModel
 
 class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
 
-    private lateinit var viewModel: NotesViewModel
-    val args: NotesDetailsFragmentArgs by navArgs()
+    private val viewModel: NotesViewModel by activityViewModels()
+    private val args: NotesDetailsFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // init view model here
-        viewModel = (activity as MainActivity).viewModel
 
         // receiving bundles here
         val notes = args.notes
@@ -36,9 +33,9 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
 
             viewModel.updateNotes(id, title, description).also {
                 findNavController().navigate(R.id.action_notesDetailsFragment_to_notesFragment)
-                Toast.makeText(activity, "Note updated successfully!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.note_updated_msg), Toast.LENGTH_SHORT)
+                    .show()
             }
         }
-
     }
 }

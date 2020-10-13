@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/notesFragment"
-        android:name="thecodemonks.org.nottzapp.UI.ui.Notes.NotesFragment"
+        android:name="thecodemonks.org.nottzapp.ui.notes.NotesFragment"
         android:label="Notzz App"
         tools:layout="@layout/notes_fragment">
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/addNotesFragment"
-        android:name="thecodemonks.org.nottzapp.UI.ui.AddNotes.AddNotesFragment"
+        android:name="thecodemonks.org.nottzapp.ui.add.AddNotesFragment"
         android:label="Add Notes"
         tools:layout="@layout/add_notes_fragment">
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/notesDetailsFragment"
-        android:name="thecodemonks.org.nottzapp.UI.ui.NotesDetails.NotesDetailsFragment"
+        android:name="thecodemonks.org.nottzapp.ui.details.NotesDetailsFragment"
         android:label="Update Notes"
         tools:layout="@layout/fragment_notes_details">
         <action

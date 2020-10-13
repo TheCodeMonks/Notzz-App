@@ -1,31 +1,35 @@
 package thecodemonks.org.nottzapp.app
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import thecodemonks.org.nottzapp.R
-import thecodemonks.org.nottzapp.UI.ui.Notes.ViewModelProviders.TodoViewModelProviderFactory
-import thecodemonks.org.nottzapp.UI.ui.Notes.ViewModels.NotesViewModel
 import thecodemonks.org.nottzapp.db.NotesDatabase
 import thecodemonks.org.nottzapp.repo.NotesRepo
+import thecodemonks.org.nottzapp.ui.notes.NotesViewModel
+import thecodemonks.org.nottzapp.utils.factory.viewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: NotesViewModel
     private lateinit var navController: NavController
+
+    private val newsRepository by lazy { NotesRepo(NotesDatabase(this)) }
+    private val viewModel: NotesViewModel by viewModels {
+        viewModelFactory { NotesViewModel(newsRepository) }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // init viewModelProvider
-        val newsRepository = NotesRepo(NotesDatabase(this))
-        val viewModelProviderFactory = TodoViewModelProviderFactory(newsRepository)
-        viewModel =
-            ViewModelProvider(this, viewModelProviderFactory).get(NotesViewModel::class.java)
-
+        /**
+         * Just so the viewModel doesn't get removed by the compiler, as it isn't used
+         * anywhere here for now
+         */
+        viewModel
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)

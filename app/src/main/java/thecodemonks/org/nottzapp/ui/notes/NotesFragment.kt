@@ -1,8 +1,9 @@
-package thecodemonks.org.nottzapp.UI.ui.Notes
+package thecodemonks.org.nottzapp.ui.notes
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -11,19 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.notes_fragment.*
 import thecodemonks.org.nottzapp.R
-import thecodemonks.org.nottzapp.UI.ui.Notes.ViewModels.NotesViewModel
 import thecodemonks.org.nottzapp.adapter.NotesAdapter
-import thecodemonks.org.nottzapp.app.MainActivity
 
 class NotesFragment : Fragment(R.layout.notes_fragment) {
 
-    private lateinit var viewModel: NotesViewModel
+    private val viewModel: NotesViewModel by activityViewModels()
     private lateinit var notesAdapter: NotesAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = (activity as MainActivity).viewModel
 
         setUpRV()
 
@@ -70,12 +67,16 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                     notes.title.toString(),
                     notes.description.toString()
                 )
-                Snackbar.make(view, "Successfully deleted notes", Snackbar.LENGTH_LONG).apply {
-                    setAction("Undo") {
-                        viewModel.insertNotes(notes.title.toString(), notes.description.toString())
+                Snackbar.make(view, getString(R.string.note_deleted_msg), Snackbar.LENGTH_LONG)
+                    .apply {
+                        setAction(getString(R.string.undo)) {
+                            viewModel.insertNotes(
+                                notes.title.toString(),
+                                notes.description.toString()
+                            )
+                        }
+                        show()
                     }
-                    show()
-                }
             }
         }
 
@@ -83,8 +84,6 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         ItemTouchHelper(itemTouchHelperCallback).apply {
             attachToRecyclerView(notes_rv)
         }
-
-
     }
 
     private fun setUpRV() {
