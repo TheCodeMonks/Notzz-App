@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.notes_fragment.*
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.adapter.NotesAdapter
 
@@ -30,9 +32,11 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         }
 
         // observer data change for saved notes
-        viewModel.getSavedNotes().observe(viewLifecycleOwner, Observer { notes ->
-            notesAdapter.differ.submitList(notes)
-        })
+        lifecycleScope.launch {
+            viewModel.getSavedNotes().collect { notes ->
+                notesAdapter.differ.submitList(notes)
+            }
+        }
 
         // onclick navigate to add notes
         notesAdapter.setOnItemClickListener {
@@ -64,15 +68,15 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                 val notes = notesAdapter.differ.currentList[position]
                 viewModel.deleteNotes(
                     notes.id!!.toInt(),
-                    notes.title.toString(),
-                    notes.description.toString()
+                    notes.title,
+                    notes.description
                 )
                 Snackbar.make(view, getString(R.string.note_deleted_msg), Snackbar.LENGTH_LONG)
                     .apply {
                         setAction(getString(R.string.undo)) {
                             viewModel.insertNotes(
-                                notes.title.toString(),
-                                notes.description.toString()
+                                notes.title,
+                                notes.description
                             )
                         }
                         show()

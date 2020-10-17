@@ -30,6 +30,7 @@ class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel() {
     // get saved notes
     fun getSavedNotes() = notesRepo.getSavedNotes()
 
+
     // delete notes
     fun deleteNotes(taskID: Int, taskName: String, taskDesc: String) = viewModelScope.launch {
         val notes = Notes(

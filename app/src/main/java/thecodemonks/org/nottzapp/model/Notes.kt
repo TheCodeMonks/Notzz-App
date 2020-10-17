@@ -1,5 +1,6 @@
 package thecodemonks.org.nottzapp.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
@@ -9,7 +10,10 @@ import java.io.Serializable
 )
 class Notes(
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = null,
-    val title: String? = null,
-    val description: String? = null
+    @ColumnInfo(name = "id")
+    var id: Int? = null,
+    @ColumnInfo(name = "title")
+    var title: String,
+    @ColumnInfo(name = "description")
+    var description: String,
 ) : Serializable
