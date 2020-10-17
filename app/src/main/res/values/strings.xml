@@ -12,4 +12,12 @@
     <string name="note_updated_msg">Note updated successfully!</string>
     <string name="note_deleted_msg">Successfully deleted notes</string>
     <string name="undo">Undo</string>
+
+    <!-- Details menu -->
+    <string name="text_share">Share</string>
+    <string name="text_delete">Delete</string>
+
+    <!-- Share article -->
+    <string name="share_message">\"%s\"\n\n Note: %s. \n\nVisit: https://github.com/TheCodeMonks/Notzz-App</string>
+
 </resources>

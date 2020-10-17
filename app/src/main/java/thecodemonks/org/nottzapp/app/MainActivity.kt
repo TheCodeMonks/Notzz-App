@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import kotlinx.android.synthetic.main.activity_main.*
 import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.db.NotesDatabase
 import thecodemonks.org.nottzapp.repo.NotesRepo
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
 
         /**
          * Just so the viewModel doesn't get removed by the compiler, as it isn't used
