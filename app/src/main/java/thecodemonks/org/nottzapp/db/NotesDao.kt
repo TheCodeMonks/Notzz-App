@@ -1,7 +1,7 @@
 package thecodemonks.org.nottzapp.db
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 import thecodemonks.org.nottzapp.model.Notes
 
 @Dao
@@ -17,7 +17,7 @@ interface NotesDao {
 
     // get all notes from db
     @Query("SELECT * FROM notes")
-    fun getNotes(): LiveData<List<Notes>>
+    fun getNotes(): Flow<List<Notes>>
 
     // delete notes from db
     @Delete
