@@ -1,7 +1,9 @@
 package thecodemonks.org.nottzapp.ui.notes
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -10,10 +12,10 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.notes_fragment.*
 import kotlinx.coroutines.launch
 import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.adapter.NotesAdapter
+import thecodemonks.org.nottzapp.databinding.NotesFragmentBinding
 import thecodemonks.org.nottzapp.model.Notes
 import thecodemonks.org.nottzapp.utils.hide
 import thecodemonks.org.nottzapp.utils.show
@@ -22,6 +24,17 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
 
     private val viewModel: NotesViewModel by activityViewModels()
     private lateinit var notesAdapter: NotesAdapter
+    private lateinit var _binding: NotesFragmentBinding
+    private val binding get() = _binding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        _binding = NotesFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,7 +42,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         setUpRV()
 
         // onclick navigate to add notes
-        btn_add_notes.setOnClickListener {
+        binding.btnAddNotes.setOnClickListener {
             findNavController().navigate(R.id.action_notesFragment_to_addNotesFragment)
         }
 
@@ -59,7 +72,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
+                target: RecyclerView.ViewHolder,
             ): Boolean {
                 return true
             }
@@ -69,7 +82,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                 val position = viewHolder.adapterPosition
                 val notes = notesAdapter.differ.currentList[position]
                 viewModel.deleteNotes(
-                    notes.id!!.toInt(),
+                    notes.id,
                     notes.title,
                     notes.description
                 )
@@ -88,20 +101,18 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
 
         // attach swipe callback to rv
         ItemTouchHelper(itemTouchHelperCallback).apply {
-            attachToRecyclerView(notes_rv)
+            attachToRecyclerView(binding.notesRv)
         }
     }
 
     private fun onNotesLoaded(notes: List<Notes>) {
-        emptyStateLayout.run {
-            if (notes.isEmpty()) show() else hide()
-        }
+        binding.emptyStateLayout.run { if (notes.isNullOrEmpty()) show() else hide() }
         notesAdapter.differ.submitList(notes)
     }
 
     private fun setUpRV() {
         notesAdapter = NotesAdapter()
-        notes_rv.apply {
+        binding.notesRv.apply {
             adapter = notesAdapter
             layoutManager = LinearLayoutManager(activity)
         }

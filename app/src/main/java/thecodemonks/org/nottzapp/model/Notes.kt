@@ -11,7 +11,7 @@ import java.io.Serializable
 class Notes(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var id: Int? = null,
+    var id: Int = 0,
     @ColumnInfo(name = "title")
     var title: String,
     @ColumnInfo(name = "description")
