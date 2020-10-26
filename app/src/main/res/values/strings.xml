@@ -19,5 +19,7 @@
 
     <!-- Share article -->
     <string name="share_message">\"%s\"\n\n Note: %s. \n\nVisit: https://github.com/TheCodeMonks/Notzz-App</string>
+    <string name="text_no_notes">No Notes Found!</string>
+    <string name="text_empty_state_description">There are no notes here. Try adding few notes</string>
 
 </resources>

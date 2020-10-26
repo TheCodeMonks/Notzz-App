@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.notes_fragment.*
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.adapter.NotesAdapter
+import thecodemonks.org.nottzapp.model.Notes
+import thecodemonks.org.nottzapp.utils.hide
+import thecodemonks.org.nottzapp.utils.show
 
 class NotesFragment : Fragment(R.layout.notes_fragment) {
 
@@ -33,8 +35,8 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
 
         // observer data change for saved notes
         lifecycleScope.launch {
-            viewModel.getSavedNotes().collect { notes ->
-                notesAdapter.differ.submitList(notes)
+            viewModel.getSavedNotes().observe(viewLifecycleOwner) { notes ->
+                onNotesLoaded(notes)
             }
         }
 
@@ -88,6 +90,13 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         ItemTouchHelper(itemTouchHelperCallback).apply {
             attachToRecyclerView(notes_rv)
         }
+    }
+
+    private fun onNotesLoaded(notes: List<Notes>) {
+        emptyStateLayout.run {
+            if (notes.isEmpty()) show() else hide()
+        }
+        notesAdapter.differ.submitList(notes)
     }
 
     private fun setUpRV() {

@@ -1,6 +1,7 @@
 package thecodemonks.org.nottzapp.ui.notes
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import thecodemonks.org.nottzapp.model.Notes
@@ -28,7 +29,7 @@ class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel() {
     }
 
     // get saved notes
-    fun getSavedNotes() = notesRepo.getSavedNotes()
+    fun getSavedNotes() = notesRepo.getSavedNotes().asLiveData()
 
 
     // delete notes
