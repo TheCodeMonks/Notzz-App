@@ -1,3 +1,32 @@
+/*
+ *
+ *  *
+ *  *  * MIT License
+ *  *  *
+ *  *  * Copyright (c) 2020 Spikey Sanju
+ *  *  *
+ *  *  * Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  *  * of this software and associated documentation files (the "Software"), to deal
+ *  *  * in the Software without restriction, including without limitation the rights
+ *  *  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  *  * copies of the Software, and to permit persons to whom the Software is
+ *  *  * furnished to do so, subject to the following conditions:
+ *  *  *
+ *  *  * The above copyright notice and this permission notice shall be included in all
+ *  *  * copies or substantial portions of the Software.
+ *  *  *
+ *  *  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  *  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  *  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  *  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  *  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  *  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  *  * SOFTWARE.
+ *  *
+ *
+ *
+ */
+
 package thecodemonks.org.nottzapp.ui.add
 
 import android.os.Bundle
@@ -30,23 +59,27 @@ class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // save notes to db
-        binding.btnSaveNotes.setOnClickListener {
-            val title = binding.notesTitleEt.text.toString().trim()
-            val description = binding.notesDescEt.text.toString().trim()
 
-            // check whether both title & desc is not empty
-            when {
-                title.isEmpty() -> {
-                    requireActivity().toast(getString(R.string.empty_title_msg))
-                }
-                description.isEmpty() -> {
-                    requireActivity().toast(getString(R.string.empty_desc_msg))
-                }
-                else -> {
-                    viewModel.insertNotes(title, description).also {
-                        requireActivity().toast(getString(R.string.note_saved_msg)).also {
-                            findNavController().navigate(R.id.action_addNotesFragment_to_notesFragment)
+        with(binding) {
+            // save notes to db
+            saveNotes.setOnClickListener {
+
+                val title = noteLayout.titleET.text.toString().trim()
+                val description = noteLayout.noteET.text.toString().trim()
+
+                // check whether both title & desc is not empty
+                when {
+                    title.isEmpty() -> {
+                        requireActivity().toast(getString(R.string.empty_title_msg))
+                    }
+                    description.isEmpty() -> {
+                        requireActivity().toast(getString(R.string.empty_desc_msg))
+                    }
+                    else -> {
+                        viewModel.insertNotes(title, description).also {
+                            requireActivity().toast(getString(R.string.note_saved_msg)).also {
+                                findNavController().navigate(R.id.action_addNotesFragment_to_notesFragment)
+                            }
                         }
                     }
                 }
