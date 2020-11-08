@@ -38,7 +38,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/edit_notes_title_et"
+            android:id="@+id/titleET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_16"
@@ -63,7 +63,7 @@
             tools:ignore="Autofill" />
 
         <EditText
-            android:id="@+id/edit_notes_desc_et"
+            android:id="@+id/noteET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_16"
@@ -86,7 +86,7 @@
             android:textColorHint="@color/hint_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_notes_title_et"
+            app:layout_constraintTop_toBottomOf="@id/titleET"
             tools:ignore="Autofill" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

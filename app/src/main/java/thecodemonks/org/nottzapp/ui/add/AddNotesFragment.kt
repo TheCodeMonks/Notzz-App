@@ -59,23 +59,27 @@ class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // save notes to db
-        binding.btnSaveNotes.setOnClickListener {
-            val title = binding.notesTitleEt.text.toString().trim()
-            val description = binding.notesDescEt.text.toString().trim()
 
-            // check whether both title & desc is not empty
-            when {
-                title.isEmpty() -> {
-                    requireActivity().toast(getString(R.string.empty_title_msg))
-                }
-                description.isEmpty() -> {
-                    requireActivity().toast(getString(R.string.empty_desc_msg))
-                }
-                else -> {
-                    viewModel.insertNotes(title, description).also {
-                        requireActivity().toast(getString(R.string.note_saved_msg)).also {
-                            findNavController().navigate(R.id.action_addNotesFragment_to_notesFragment)
+        with(binding) {
+            // save notes to db
+            saveNotes.setOnClickListener {
+
+                val title = noteLayout.titleET.text.toString().trim()
+                val description = noteLayout.noteET.text.toString().trim()
+
+                // check whether both title & desc is not empty
+                when {
+                    title.isEmpty() -> {
+                        requireActivity().toast(getString(R.string.empty_title_msg))
+                    }
+                    description.isEmpty() -> {
+                        requireActivity().toast(getString(R.string.empty_desc_msg))
+                    }
+                    else -> {
+                        viewModel.insertNotes(title, description).also {
+                            requireActivity().toast(getString(R.string.note_saved_msg)).also {
+                                findNavController().navigate(R.id.action_addNotesFragment_to_notesFragment)
+                            }
                         }
                     }
                 }

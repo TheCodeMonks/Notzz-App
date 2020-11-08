@@ -28,76 +28,26 @@
   ~
   -->
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     tools:context=".ui.add.AddNotesFragment">
 
-    <RelativeLayout
+    <include
+        android:id="@+id/noteLayout"
+        layout="@layout/content_note_layout" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveNotes"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/dimen_32"
+        android:backgroundTint="@color/colorAccent"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_baseline_check" />
 
-        <EditText
-            android:id="@+id/notes_title_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_16"
-            android:layout_marginTop="@dimen/dimen_16"
-            android:layout_marginEnd="@dimen/dimen_16"
-            android:background="@null"
-            android:cursorVisible="true"
-            android:ems="10"
-            android:fontFamily="@font/montserrat_bold"
-            android:gravity="start"
-            android:hint="@string/title_hint"
-            android:inputType="textCapSentences|textMultiLine"
-            android:maxLength="60"
-            android:padding="@dimen/dimen_12"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/hint_color"
-            tools:ignore="Autofill" />
-
-        <EditText
-            android:id="@+id/notes_desc_et"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/notes_title_et"
-            android:layout_marginStart="@dimen/dimen_16"
-            android:layout_marginTop="@dimen/dimen_16"
-            android:layout_marginEnd="@dimen/dimen_16"
-            android:background="@null"
-            android:cursorVisible="true"
-            android:ems="10"
-            android:fontFamily="@font/montserrat"
-            android:gravity="start"
-            android:hint="@string/desc_hint"
-            android:inputType="textCapSentences|textMultiLine"
-            android:minLines="10"
-            android:overScrollMode="always"
-            android:padding="@dimen/dimen_12"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/hint_color"
-            tools:ignore="Autofill" />
-
-        <Button
-            android:id="@+id/btn_save_notes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="@dimen/dimen_16"
-            android:layout_marginEnd="@dimen/dimen_16"
-            android:layout_marginBottom="@dimen/dimen_16"
-            android:backgroundTint="@color/colorAccent"
-            android:text="@string/save_notes_btn"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-            android:textColor="@color/colorPrimary" />
-
-    </RelativeLayout>
-
-</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

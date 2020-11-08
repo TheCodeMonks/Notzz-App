@@ -68,17 +68,15 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
         val notes = args.notes
         val id = notes.id
 
-        with(binding.noteLayout) {
-            editNotesTitleEt.setText(notes.title)
-            editNotesDescEt.setText(notes.description)
-        }
+        with(binding) {
+            noteLayout.titleET.setText(notes.title)
+            noteLayout.noteET.setText(notes.description)
 
-        // update notes on click
-        binding.updateBtnSaveNotes.setOnClickListener {
+            // update notes on click
+            updateBtnSaveNotes.setOnClickListener {
 
-            with(binding.noteLayout) {
-                val title = editNotesTitleEt.text.toString().trim()
-                val description = editNotesDescEt.text.toString().trim()
+                val title = noteLayout.titleET.text.toString().trim()
+                val description = noteLayout.noteET.toString().trim()
 
                 viewModel.updateNotes(id, title, description).also {
                     findNavController().navigate(R.id.action_notesDetailsFragment_to_notesFragment)
