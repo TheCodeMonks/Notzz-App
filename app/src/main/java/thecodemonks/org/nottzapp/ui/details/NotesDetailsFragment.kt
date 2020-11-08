@@ -67,19 +67,26 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
         // receiving bundles here
         val notes = args.notes
         val id = notes.id
-        binding.editNotesTitleEt.setText(notes.title)
-        binding.editNotesDescEt.setText(notes.description)
+
+        with(binding.noteLayout) {
+            editNotesTitleEt.setText(notes.title)
+            editNotesDescEt.setText(notes.description)
+        }
 
         // update notes on click
         binding.updateBtnSaveNotes.setOnClickListener {
 
-            val title = binding.editNotesTitleEt.text.toString().trim()
-            val description = binding.editNotesDescEt.text.toString().trim()
+            with(binding.noteLayout) {
+                val title = editNotesTitleEt.text.toString().trim()
+                val description = editNotesDescEt.text.toString().trim()
 
-            viewModel.updateNotes(id, title, description).also {
-                findNavController().navigate(R.id.action_notesDetailsFragment_to_notesFragment)
-                Toast.makeText(activity, getString(R.string.note_updated_msg), Toast.LENGTH_SHORT)
-                    .show()
+                viewModel.updateNotes(id, title, description).also {
+                    findNavController().navigate(R.id.action_notesDetailsFragment_to_notesFragment)
+                    Toast.makeText(activity,
+                        getString(R.string.note_updated_msg),
+                        Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
         }
     }
