@@ -47,7 +47,6 @@
         android:layout_margin="@dimen/dimen_32"
         android:backgroundTint="@color/colorAccent"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_add"
-        android:textColor="@color/colorPrimary" />
+        android:src="@android:drawable/ic_input_add" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
