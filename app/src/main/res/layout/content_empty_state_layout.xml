@@ -52,7 +52,7 @@
         android:gravity="center_horizontal"
         android:text="@string/text_no_notes"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/title_text_color" />
 
 
     <TextView
@@ -66,6 +66,6 @@
         android:gravity="center_horizontal"
         android:text="@string/text_empty_state_description"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        android:textColor="#ddd" />
+        android:textColor="@color/note_text_color" />
 
 </RelativeLayout>

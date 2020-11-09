@@ -29,14 +29,32 @@
 
 package thecodemonks.org.nottzapp.ui.notes
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import thecodemonks.org.nottzapp.datastore.UIModePreference
 import thecodemonks.org.nottzapp.model.Notes
 import thecodemonks.org.nottzapp.repo.NotesRepo
 
-class NotesViewModel(private val notesRepo: NotesRepo) : ViewModel() {
+class NotesViewModel(application: Application, private val notesRepo: NotesRepo) :
+    AndroidViewModel(application) {
+
+    // DataStore
+    private val uiDataStore = UIModePreference(application)
+
+    // get UI mode
+    val getUIMode = uiDataStore.uiMode
+
+    // save UI mode
+    fun saveToDataStore(isNightMode: Boolean) {
+        viewModelScope.launch(IO) {
+            uiDataStore.saveToDataStore(isNightMode)
+        }
+    }
+
 
     // save notes
     fun insertNotes(taskName: String, taskDesc: String) = viewModelScope.launch {

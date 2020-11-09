@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val newsRepository by lazy { NotesRepo(NotesDatabase(this)) }
     private val viewModel: NotesViewModel by viewModels {
-        viewModelFactory { NotesViewModel(newsRepository) }
+        viewModelFactory { NotesViewModel(this.application, newsRepository) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
