@@ -34,6 +34,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dimen_4"
+    app:cardElevation="@dimen/dimen_0"
     app:cardBackgroundColor="@color/card_bg"
     app:cardCornerRadius="@dimen/dimen_4">
 
@@ -51,7 +52,7 @@
             android:layout_marginEnd="@dimen/dimen_16"
             android:fontFamily="@font/montserrat_bold"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-            android:textColor="@android:color/white"
+            android:textColor="@color/title_text_color"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +69,7 @@
             android:layout_marginBottom="@dimen/dimen_16"
             android:fontFamily="@font/montserrat"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-            android:textColor="#ddd"
+            android:textColor="@color/note_text_color"
             android:ellipsize="end"
             android:lineSpacingExtra="@dimen/dimen_4"
             android:maxLines="2"

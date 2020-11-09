@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ /*
   ~  *
   ~  *  * MIT License
@@ -28,13 +27,13 @@
   ~
   -->
 
-<resources>
-    <color name="colorPrimary">#fff</color>
-    <color name="colorPrimaryDark">#121212</color>
-    <color name="background">#f9f9f9</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="hint_color">#979797</color>
-    <color name="title_text_color">#333333</color>
-    <color name="note_text_color">#11111E</color>
-    <color name="card_bg">#fff</color>
-</resources>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_night_mode"
+        android:checkable="true"
+        android:icon="@drawable/ic_day"
+        android:title="@string/text_ui_mode"
+        app:showAsAction="ifRoom" />
+
+</menu>

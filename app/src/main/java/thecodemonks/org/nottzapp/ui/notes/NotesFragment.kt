@@ -30,9 +30,8 @@
 package thecodemonks.org.nottzapp.ui.notes
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -41,6 +40,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.adapter.NotesAdapter
@@ -67,7 +67,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setHasOptionsMenu(true)
         setUpRV()
 
         // onclick navigate to add notes
@@ -144,6 +144,44 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         binding.notesRv.apply {
             adapter = notesAdapter
             layoutManager = LinearLayoutManager(activity)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.ui_menu, menu)
+
+        // Set the item state
+        lifecycleScope.launch {
+            val isChecked = viewModel.getUIMode.first()
+            val item = menu.findItem(R.id.action_night_mode)
+            item.isChecked = isChecked
+            setUIMode(item, isChecked)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here.
+        return when (item.itemId) {
+            R.id.action_night_mode -> {
+                item.isChecked = !item.isChecked
+                setUIMode(item, item.isChecked)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun setUIMode(item: MenuItem, isChecked: Boolean) {
+        if (isChecked) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            viewModel.saveToDataStore(true)
+            item.setIcon(R.drawable.ic_night)
+
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            viewModel.saveToDataStore(false)
+            item.setIcon(R.drawable.ic_day)
+
         }
     }
 }
