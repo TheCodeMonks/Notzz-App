@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/titleET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,32 +62,25 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="Autofill" />
 
-        <EditText
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/noteET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_16"
             android:layout_marginTop="@dimen/dimen_16"
             android:layout_marginEnd="@dimen/dimen_16"
-            android:background="@null"
-            android:cursorVisible="true"
-            android:ems="10"
+            android:background="@color/colorPrimary"
+            android:lineSpacingExtra="5dp"
             android:fontFamily="@font/montserrat"
             android:gravity="start"
             android:hint="@string/desc_hint"
-            android:inputType="textCapSentences|textMultiLine"
-            android:minLines="10"
-            android:overScrollMode="always"
             android:padding="@dimen/dimen_12"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical"
+            android:paddingBottom="@dimen/dimen_64"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-            android:textColor="@color/note_text_color"
-            android:textColorHint="@color/hint_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleET"
-            tools:ignore="Autofill" />
+            app:layout_constraintTop_toBottomOf="@+id/titleET" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
