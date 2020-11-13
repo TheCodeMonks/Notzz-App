@@ -74,11 +74,9 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
 
             // update notes on click
             updateBtnSaveNotes.setOnClickListener {
+                val (title, note) = getNoteContent()
 
-                val title = noteLayout.titleET.text.toString().trim()
-                val description = noteLayout.noteET.toString().trim()
-
-                viewModel.updateNotes(id, title, description).also {
+                viewModel.updateNotes(id, title, note).also {
                     findNavController().navigate(R.id.action_notesDetailsFragment_to_notesFragment)
                     Toast.makeText(activity,
                         getString(R.string.note_updated_msg),
@@ -124,5 +122,12 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
 
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun getNoteContent() = binding.noteLayout.let {
+        Pair(
+            it.titleET.text.toString(),
+            it.noteET.text.toString()
+        )
     }
 }

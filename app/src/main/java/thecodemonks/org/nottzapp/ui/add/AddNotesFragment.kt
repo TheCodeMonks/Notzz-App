@@ -86,12 +86,10 @@ class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {
         }
     }
 
-
     private fun getNoteContent() = binding.noteLayout.let {
         Pair(
             it.titleET.text.toString(),
             it.noteET.text.toString()
         )
     }
-
 }
