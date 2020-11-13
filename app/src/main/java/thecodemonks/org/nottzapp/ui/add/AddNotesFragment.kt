@@ -64,19 +64,18 @@ class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {
             // save notes to db
             saveNotes.setOnClickListener {
 
-                val title = noteLayout.titleET.text.toString().trim()
-                val description = noteLayout.noteET.text.toString().trim()
+                val (title, note) = getNoteContent()
 
                 // check whether both title & desc is not empty
                 when {
                     title.isEmpty() -> {
                         requireActivity().toast(getString(R.string.empty_title_msg))
                     }
-                    description.isEmpty() -> {
+                    note.isEmpty() -> {
                         requireActivity().toast(getString(R.string.empty_desc_msg))
                     }
                     else -> {
-                        viewModel.insertNotes(title, description).also {
+                        viewModel.insertNotes(title, note).also {
                             requireActivity().toast(getString(R.string.note_saved_msg)).also {
                                 findNavController().navigate(R.id.action_addNotesFragment_to_notesFragment)
                             }
@@ -86,4 +85,13 @@ class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {
             }
         }
     }
+
+
+    private fun getNoteContent() = binding.noteLayout.let {
+        Pair(
+            it.titleET.text.toString(),
+            it.noteET.text.toString()
+        )
+    }
+
 }
