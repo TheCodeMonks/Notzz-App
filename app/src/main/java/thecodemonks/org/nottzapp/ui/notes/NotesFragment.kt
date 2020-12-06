@@ -60,7 +60,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = NotesFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }

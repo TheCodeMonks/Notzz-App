@@ -51,7 +51,7 @@ class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = AddNotesFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
