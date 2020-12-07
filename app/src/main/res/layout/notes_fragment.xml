@@ -53,7 +53,8 @@
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@android:drawable/ic_input_add" />
+        android:src="@drawable/ic_baseline_add"
+        app:tint="@android:color/white" />
 
     <ViewStub
         android:id="@+id/emptyStateLayout"
