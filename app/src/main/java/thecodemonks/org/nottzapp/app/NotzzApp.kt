@@ -27,24 +27,10 @@
  *
  */
 
-package thecodemonks.org.nottzapp.repo
+package thecodemonks.org.nottzapp.app
 
-import thecodemonks.org.nottzapp.db.NotesDatabase
-import thecodemonks.org.nottzapp.model.Notes
-import javax.inject.Inject
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-
-class NotesRepo @Inject constructor(private val db: NotesDatabase) {
-
-    // insert notes
-    suspend fun insert(notes: Notes) = db.getNotesDao().insertNotes(notes)
-
-    // update notes
-    suspend fun update(notes: Notes) = db.getNotesDao().updateNotes(notes)
-
-    // get saved notes
-    fun getSavedNotes() = db.getNotesDao().getNotes()
-
-    // delete article
-    suspend fun deleteNotes(notes: Notes) = db.getNotesDao().deleteNotes(notes)
-}
+@HiltAndroidApp
+class NotzzApp: Application()

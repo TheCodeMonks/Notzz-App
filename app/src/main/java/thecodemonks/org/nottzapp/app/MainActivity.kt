@@ -35,6 +35,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.databinding.ActivityMainBinding
 import thecodemonks.org.nottzapp.db.NotesDatabase
@@ -42,6 +43,7 @@ import thecodemonks.org.nottzapp.repo.NotesRepo
 import thecodemonks.org.nottzapp.ui.notes.NotesViewModel
 import thecodemonks.org.nottzapp.utils.factory.viewModelFactory
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var appBarConfiguration: AppBarConfiguration

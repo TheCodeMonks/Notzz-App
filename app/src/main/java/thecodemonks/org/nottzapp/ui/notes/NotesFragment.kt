@@ -40,6 +40,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import thecodemonks.org.nottzapp.R
@@ -49,6 +50,7 @@ import thecodemonks.org.nottzapp.model.Notes
 import thecodemonks.org.nottzapp.utils.hide
 import thecodemonks.org.nottzapp.utils.show
 
+@AndroidEntryPoint
 class NotesFragment : Fragment(R.layout.notes_fragment) {
 
     private val viewModel: NotesViewModel by activityViewModels()

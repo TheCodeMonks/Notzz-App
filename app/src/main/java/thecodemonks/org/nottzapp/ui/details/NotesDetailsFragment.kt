@@ -33,6 +33,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.core.app.ShareCompat
+import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -41,6 +42,7 @@ import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.databinding.FragmentNotesDetailsBinding
 import thecodemonks.org.nottzapp.ui.notes.NotesViewModel
 
+@AndroidEntryPoint
 class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
 
     private val viewModel: NotesViewModel by activityViewModels()
