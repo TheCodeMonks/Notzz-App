@@ -3,6 +3,7 @@
     package="thecodemonks.org.nottzapp">
 
     <application
+        android:name=".app.NotzzApp"
         android:allowBackup="true"
         android:icon="@drawable/nottzlogo"
         android:label="@string/app_name"

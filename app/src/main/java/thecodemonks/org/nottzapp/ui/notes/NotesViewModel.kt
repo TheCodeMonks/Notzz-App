@@ -38,8 +38,9 @@ import kotlinx.coroutines.launch
 import thecodemonks.org.nottzapp.datastore.UIModePreference
 import thecodemonks.org.nottzapp.model.Notes
 import thecodemonks.org.nottzapp.repo.NotesRepo
+import javax.inject.Inject
 
-class NotesViewModel(application: Application, private val notesRepo: NotesRepo) :
+class NotesViewModel @Inject internal constructor (application: Application, private val notesRepo: NotesRepo) :
     AndroidViewModel(application) {
 
     // DataStore
@@ -89,3 +90,6 @@ class NotesViewModel(application: Application, private val notesRepo: NotesRepo)
         notesRepo.deleteNotes(notes)
     }
 }
+
+
+

@@ -27,24 +27,33 @@
  *
  */
 
-package thecodemonks.org.nottzapp.repo
+package thecodemonks.org.nottzapp.di
 
+import android.app.Application
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import thecodemonks.org.nottzapp.datastore.UIModePreference
 import thecodemonks.org.nottzapp.db.NotesDatabase
-import thecodemonks.org.nottzapp.model.Notes
-import javax.inject.Inject
+import javax.inject.Singleton
 
 
-class NotesRepo @Inject constructor(private val db: NotesDatabase) {
+@InstallIn(ActivityComponent::class)
+@Module
+class AppModule {
 
-    // insert notes
-    suspend fun insert(notes: Notes) = db.getNotesDao().insertNotes(notes)
 
-    // update notes
-    suspend fun update(notes: Notes) = db.getNotesDao().updateNotes(notes)
+    @Singleton
+    @Provides
+    fun providePreferenceManager(application: Application): UIModePreference {
+        return UIModePreference(application.applicationContext)
+    }
 
-    // get saved notes
-    fun getSavedNotes() = db.getNotesDao().getNotes()
+    @Singleton
+    @Provides
+    fun provideNoteDatabase(application: Application): NotesDatabase {
+        return NotesDatabase.invoke(application.applicationContext)
+    }
 
-    // delete article
-    suspend fun deleteNotes(notes: Notes) = db.getNotesDao().deleteNotes(notes)
 }
