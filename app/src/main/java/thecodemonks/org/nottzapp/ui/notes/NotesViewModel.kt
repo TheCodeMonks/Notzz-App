@@ -40,7 +40,10 @@ import thecodemonks.org.nottzapp.model.Notes
 import thecodemonks.org.nottzapp.repo.NotesRepo
 import javax.inject.Inject
 
-class NotesViewModel @Inject internal constructor (application: Application, private val notesRepo: NotesRepo) :
+class NotesViewModel @Inject internal constructor (
+    application: Application,
+    private val notesRepo: NotesRepo
+) :
     AndroidViewModel(application) {
 
     // DataStore
@@ -55,7 +58,6 @@ class NotesViewModel @Inject internal constructor (application: Application, pri
             uiDataStore.saveToDataStore(isNightMode)
         }
     }
-
 
     // save notes
     fun insertNotes(taskName: String, taskDesc: String) = viewModelScope.launch {
@@ -79,7 +81,6 @@ class NotesViewModel @Inject internal constructor (application: Application, pri
     // get saved notes
     fun getSavedNotes() = notesRepo.getSavedNotes().asLiveData()
 
-
     // delete notes
     fun deleteNotes(taskID: Int, taskName: String, taskDesc: String) = viewModelScope.launch {
         val notes = Notes(
@@ -90,6 +91,3 @@ class NotesViewModel @Inject internal constructor (application: Application, pri
         notesRepo.deleteNotes(notes)
     }
 }
-
-
-

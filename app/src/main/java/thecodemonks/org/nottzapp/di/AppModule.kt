@@ -38,11 +38,9 @@ import thecodemonks.org.nottzapp.datastore.UIModePreference
 import thecodemonks.org.nottzapp.db.NotesDatabase
 import javax.inject.Singleton
 
-
 @InstallIn(ActivityComponent::class)
 @Module
 class AppModule {
-
 
     @Singleton
     @Provides
@@ -55,5 +53,4 @@ class AppModule {
     fun provideNoteDatabase(application: Application): NotesDatabase {
         return NotesDatabase.invoke(application.applicationContext)
     }
-
 }

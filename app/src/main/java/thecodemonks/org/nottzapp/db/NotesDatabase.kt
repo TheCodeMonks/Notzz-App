@@ -41,7 +41,7 @@ import thecodemonks.org.nottzapp.model.Notes
     exportSchema = false
 )
 
-abstract class NotesDatabase: RoomDatabase()  {
+abstract class NotesDatabase : RoomDatabase() {
 
     abstract fun getNotesDao(): NotesDao
 
@@ -51,10 +51,9 @@ abstract class NotesDatabase: RoomDatabase()  {
         private val LOCK = Any()
 
         // Check for DB instance if not null then get or insert or else create new DB Instance
-        operator fun invoke(context: Context) = instance?: synchronized(LOCK){
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
 
-            instance?: createDatabase(context).also{ instance = it }
-
+            instance ?: createDatabase(context).also { instance = it }
         }
 
         // create db instance

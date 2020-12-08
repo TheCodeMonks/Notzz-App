@@ -66,13 +66,12 @@ class MainActivity : AppCompatActivity() {
 
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
-                ?: return
+            ?: return
 
         with(navHostFragment.navController) {
             appBarConfiguration = AppBarConfiguration(graph)
             setupActionBarWithNavController(this, appBarConfiguration)
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
