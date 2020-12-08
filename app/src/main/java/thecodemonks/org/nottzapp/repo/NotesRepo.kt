@@ -33,7 +33,6 @@ import thecodemonks.org.nottzapp.db.NotesDatabase
 import thecodemonks.org.nottzapp.model.Notes
 import javax.inject.Inject
 
-
 class NotesRepo @Inject constructor(private val db: NotesDatabase) {
 
     // insert notes

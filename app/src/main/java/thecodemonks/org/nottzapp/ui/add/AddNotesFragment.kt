@@ -61,7 +61,6 @@ class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         with(binding) {
             // save notes to db
             saveNotes.setOnClickListener {
@@ -79,7 +78,9 @@ class AddNotesFragment : Fragment(R.layout.add_notes_fragment) {
                     else -> {
                         viewModel.insertNotes(title, note).also {
                             requireActivity().toast(getString(R.string.note_saved_msg)).also {
-                                findNavController().navigate(R.id.action_addNotesFragment_to_notesFragment)
+                                findNavController().navigate(
+                                    R.id.action_addNotesFragment_to_notesFragment
+                                )
                             }
                         }
                     }

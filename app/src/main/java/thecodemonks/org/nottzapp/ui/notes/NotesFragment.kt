@@ -178,12 +178,10 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             viewModel.saveToDataStore(true)
             item.setIcon(R.drawable.ic_night)
-
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             viewModel.saveToDataStore(false)
             item.setIcon(R.drawable.ic_day)
-
         }
     }
 }

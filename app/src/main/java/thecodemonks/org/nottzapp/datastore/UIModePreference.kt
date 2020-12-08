@@ -29,7 +29,6 @@
 
 package thecodemonks.org.nottzapp.datastore
 
-
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -59,5 +58,4 @@ class UIModePreference(context: Context) {
     companion object {
         private val UI_MODE_KEY = preferencesKey<Boolean>("ui_mode")
     }
-
 }

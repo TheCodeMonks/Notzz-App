@@ -84,7 +84,6 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesVH>() {
                 onItemClickListener?.let { it(item) }
             }
         }
-
     }
 
     // on item click listener

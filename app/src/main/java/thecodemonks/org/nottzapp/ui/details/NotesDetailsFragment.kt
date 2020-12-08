@@ -33,11 +33,11 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.core.app.ShareCompat
-import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.databinding.FragmentNotesDetailsBinding
 import thecodemonks.org.nottzapp.ui.notes.NotesViewModel
@@ -65,7 +65,6 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
 
         setHasOptionsMenu(true)
 
-
         // receiving bundles here
         val notes = args.notes
         val id = notes.id
@@ -80,9 +79,11 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
 
                 viewModel.updateNotes(id, title, note).also {
                     findNavController().navigate(R.id.action_notesDetailsFragment_to_notesFragment)
-                    Toast.makeText(activity,
+                    Toast.makeText(
+                        activity,
                         getString(R.string.note_updated_msg),
-                        Toast.LENGTH_SHORT)
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                 }
             }
