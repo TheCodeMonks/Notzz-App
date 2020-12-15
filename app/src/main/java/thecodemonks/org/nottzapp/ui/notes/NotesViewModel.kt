@@ -34,17 +34,25 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import thecodemonks.org.nottzapp.datastore.UIModePreference
 import thecodemonks.org.nottzapp.model.Notes
 import thecodemonks.org.nottzapp.repo.NotesRepo
+import thecodemonks.org.nottzapp.utils.NotesViewState
 import javax.inject.Inject
 
-class NotesViewModel @Inject internal constructor (
+class NotesViewModel @Inject internal constructor(
     application: Application,
-    private val notesRepo: NotesRepo
+    private val notesRepo: NotesRepo,
 ) :
     AndroidViewModel(application) {
+
+    // Backing property to avoid state updates from other classes
+    private val _uiState = MutableStateFlow<NotesViewState>(NotesViewState.Loading)
+
+    // The UI collects from this StateFlow to get its state updates
+    val uiState = _uiState.asStateFlow()
 
     // DataStore
     private val uiDataStore = UIModePreference(application)
@@ -76,6 +84,18 @@ class NotesViewModel @Inject internal constructor (
             description = taskDesc
         )
         notesRepo.update(notes)
+    }
+
+    init {
+        viewModelScope.launch {
+            notesRepo.getSavedNotes().distinctUntilChanged().collect { result ->
+                if (result.isNullOrEmpty()) {
+                    _uiState.value = NotesViewState.Empty
+                } else {
+                    _uiState.value = NotesViewState.Success(result)
+                }
+            }
+        }
     }
 
     // get saved notes

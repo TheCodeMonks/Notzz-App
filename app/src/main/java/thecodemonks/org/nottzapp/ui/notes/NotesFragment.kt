@@ -41,14 +41,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.adapter.NotesAdapter
 import thecodemonks.org.nottzapp.databinding.NotesFragmentBinding
 import thecodemonks.org.nottzapp.model.Notes
+import thecodemonks.org.nottzapp.utils.NotesViewState
 import thecodemonks.org.nottzapp.utils.hide
 import thecodemonks.org.nottzapp.utils.show
+import thecodemonks.org.nottzapp.utils.toast
 
 @AndroidEntryPoint
 class NotesFragment : Fragment(R.layout.notes_fragment) {
@@ -71,19 +74,13 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         setUpRV()
+        initViews()
+        observeNotes()
+        initSwipeToDeleteNote()
+        onClickNotes()
+    }
 
-        // onclick navigate to add notes
-        binding.btnAddNotes.setOnClickListener {
-            findNavController().navigate(R.id.action_notesFragment_to_addNotesFragment)
-        }
-
-        // observer data change for saved notes
-        lifecycleScope.launch {
-            viewModel.getSavedNotes().observe(viewLifecycleOwner) { notes ->
-                onNotesLoaded(notes)
-            }
-        }
-
+    private fun onClickNotes() {
         // onclick navigate to add notes
         notesAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
@@ -94,7 +91,34 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                 bundle
             )
         }
+    }
 
+    private fun observeNotes() {
+
+        // This will block will run on started state & will suspend when view moves to stop state
+        lifecycleScope.launchWhenStarted {
+            // Triggers the flow and starts listening for values
+            viewModel.uiState.collect { uiState ->
+                when (uiState) {
+                    is NotesViewState.Loading -> binding.progress.show()
+                    is NotesViewState.Success -> {
+                        binding.progress.hide()
+                        onNotesLoaded(uiState.notes)
+                    }
+                    is NotesViewState.Error -> {
+                        binding.progress.hide()
+                        requireActivity().toast("Error...")
+                    }
+                    is NotesViewState.Empty -> {
+                        binding.progress.hide()
+                        showEmptyState()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun initSwipeToDeleteNote() {
         // init item touch callback for swipe action
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
@@ -117,7 +141,11 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                     notes.title,
                     notes.description
                 )
-                Snackbar.make(view, getString(R.string.note_deleted_msg), Snackbar.LENGTH_LONG)
+                Snackbar.make(
+                    binding.root,
+                    getString(R.string.note_deleted_msg),
+                    Snackbar.LENGTH_LONG
+                )
                     .apply {
                         setAction(getString(R.string.undo)) {
                             viewModel.insertNotes(
@@ -136,8 +164,19 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         }
     }
 
+    private fun initViews() {
+        // onclick navigate to add notes
+        binding.btnAddNotes.setOnClickListener {
+            findNavController().navigate(R.id.action_notesFragment_to_addNotesFragment)
+        }
+    }
+
+    private fun showEmptyState() {
+        binding.emptyStateLayout.show()
+    }
+
     private fun onNotesLoaded(notes: List<Notes>) {
-        binding.emptyStateLayout.run { if (notes.isNullOrEmpty()) show() else hide() }
+        binding.emptyStateLayout.hide()
         notesAdapter.differ.submitList(notes)
     }
 
