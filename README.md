@@ -33,7 +33,7 @@
     ├── data                # For data handling.
     │   ├── db              # Local Persistence Database. Room (SQLite) database
     |   │   ├── dao         # Data Access Object for Room   
-    |   |   |── database    # Datbase Instance
+    |   |   |── database    # Database Instance
     |
     ├── model               # Model classes
     |
@@ -42,8 +42,7 @@
     │   ├── main            # Main Screen Activity & ViewModel
     |   │   ├── adapter     # Adapter for RecyclerView
     |   │   └── viewmodel   # ViewHolder for RecyclerView   
-        
-    
+
     
     ## Architecture
     

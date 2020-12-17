@@ -37,4 +37,5 @@
     <color name="title_text_color">#333333</color>
     <color name="note_text_color">#11111E</color>
     <color name="card_bg">#fff</color>
+    <color name="white">#ffffff</color>
 </resources>

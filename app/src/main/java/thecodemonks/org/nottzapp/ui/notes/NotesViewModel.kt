@@ -31,10 +31,12 @@ package thecodemonks.org.nottzapp.ui.notes
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import thecodemonks.org.nottzapp.datastore.UIModePreference
 import thecodemonks.org.nottzapp.model.Notes
@@ -86,6 +88,7 @@ class NotesViewModel @Inject internal constructor(
         notesRepo.update(notes)
     }
 
+    // get all saved notes by default
     init {
         viewModelScope.launch {
             notesRepo.getSavedNotes().distinctUntilChanged().collect { result ->
@@ -97,9 +100,6 @@ class NotesViewModel @Inject internal constructor(
             }
         }
     }
-
-    // get saved notes
-    fun getSavedNotes() = notesRepo.getSavedNotes().asLiveData()
 
     // delete notes
     fun deleteNotes(taskID: Int, taskName: String, taskDesc: String) = viewModelScope.launch {
