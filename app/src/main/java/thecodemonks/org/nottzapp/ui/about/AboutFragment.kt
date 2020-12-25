@@ -62,9 +62,11 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
 
     private fun initViews() {
         binding.run {
-            appVersion.text = getString(R.string.text_app_version,
+            appVersion.text = getString(
+                R.string.text_app_version,
                 BuildConfig.VERSION_NAME,
-                BuildConfig.VERSION_CODE)
+                BuildConfig.VERSION_CODE
+            )
 
             license.setOnClickListener {
                 launchBrowser(REPO_LICENSE)
