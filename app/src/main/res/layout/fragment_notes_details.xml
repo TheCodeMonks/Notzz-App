@@ -32,6 +32,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     tools:context=".ui.add.AddNotesFragment">
 
@@ -47,6 +48,7 @@
         android:layout_margin="@dimen/dimen_32"
         android:backgroundTint="@color/colorAccent"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_baseline_check" />
+        android:src="@drawable/ic_baseline_check"
+        app:tint="@android:color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
