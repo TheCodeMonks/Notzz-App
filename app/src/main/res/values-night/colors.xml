@@ -38,5 +38,5 @@
     <color name="title_text_color">#f2f2f2</color>
     <color name="note_text_color">#f2f2f2</color>
     <color name="white">#ffffff</color>
-
+    <color name="blue">#2F80ED</color>
 </resources>

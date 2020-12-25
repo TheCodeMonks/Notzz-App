@@ -38,4 +38,5 @@
     <color name="note_text_color">#11111E</color>
     <color name="card_bg">#fff</color>
     <color name="white">#ffffff</color>
+    <color name="blue">#2F80ED</color>
 </resources>

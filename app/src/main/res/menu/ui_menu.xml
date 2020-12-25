@@ -36,4 +36,10 @@
         android:title="@string/text_ui_mode"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/action_about"
+        android:enabled="true"
+        android:title="@string/menu_about"
+        app:showAsAction="never" />
+
 </menu>

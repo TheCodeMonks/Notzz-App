@@ -208,6 +208,11 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                 setUIMode(item, item.isChecked)
                 true
             }
+
+            R.id.action_about -> {
+                findNavController().navigate(R.id.action_notesFragment_to_aboutFragment)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
