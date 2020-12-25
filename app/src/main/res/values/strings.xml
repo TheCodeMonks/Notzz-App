@@ -45,10 +45,19 @@
     <string name="text_share">Share</string>
     <string name="text_delete">Delete</string>
 
-    <!-- Share article -->
+    <!-- Share notes -->
     <string name="share_message">\"%s\"\n\n Note: %s. \n\nVisit: https://github.com/TheCodeMonks/Notzz-App</string>
     <string name="text_no_notes">No Notes Found!</string>
     <string name="text_empty_state_description">There are no notes here. Try adding few notes</string>
     <string name="text_ui_mode">UI mode</string>
+    <string name="menu_about">About</string>
+
+    <!-- About us -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_about_license_title"><![CDATA[Attributions & License]]></string>
+    <string name="text_about_license">Licensed Under MIT License</string>
+    <string name="text_about_visit_title">Visit</string>
+    <string name="text_about_visit_url"><u>https://github.com/TheCodeMonks/Notzz-App</u></string>
+    <string name="text_app_version">v%s (%d)</string>
 
 </resources>
