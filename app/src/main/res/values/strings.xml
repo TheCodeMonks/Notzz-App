@@ -53,7 +53,6 @@
     <string name="menu_about">About</string>
 
     <!-- About us -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_about_license_title"><![CDATA[Attributions & License]]></string>
     <string name="text_about_license">Licensed Under MIT License</string>
     <string name="text_about_visit_title">Visit</string>
