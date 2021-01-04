@@ -29,6 +29,7 @@
 
 package thecodemonks.org.nottzapp.ui.details
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -95,6 +96,7 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
         inflater.inflate(R.menu.share_menu, menu)
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here.
         return when (item.itemId) {

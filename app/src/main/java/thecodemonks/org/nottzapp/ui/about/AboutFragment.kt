@@ -60,21 +60,19 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         initViews()
     }
 
-    private fun initViews() {
-        binding.run {
-            appVersion.text = getString(
-                R.string.text_app_version,
-                BuildConfig.VERSION_NAME,
-                BuildConfig.VERSION_CODE
-            )
+    private fun initViews() = with(binding) {
+        appVersion.text = getString(
+            R.string.text_app_version,
+            BuildConfig.VERSION_NAME,
+            BuildConfig.VERSION_CODE
+        )
 
-            license.setOnClickListener {
-                launchBrowser(REPO_LICENSE)
-            }
+        license.setOnClickListener {
+            launchBrowser(REPO_LICENSE)
+        }
 
-            visitURL.setOnClickListener {
-                launchBrowser(REPO_URL)
-            }
+        visitURL.setOnClickListener {
+            launchBrowser(REPO_URL)
         }
     }
 
