@@ -38,7 +38,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
-import thecodemonks.org.nottzapp.datastore.UIModePreference
+import thecodemonks.org.nottzapp.datastore.UIModeDataStore
 import thecodemonks.org.nottzapp.model.Notes
 import thecodemonks.org.nottzapp.repo.NotesRepo
 import thecodemonks.org.nottzapp.utils.NotesViewState
@@ -57,7 +57,7 @@ class NotesViewModel @Inject internal constructor(
     val uiState = _uiState.asStateFlow()
 
     // DataStore
-    private val uiDataStore = UIModePreference(application)
+    private val uiDataStore = UIModeDataStore(application)
 
     // get UI mode
     val getUIMode = uiDataStore.uiMode

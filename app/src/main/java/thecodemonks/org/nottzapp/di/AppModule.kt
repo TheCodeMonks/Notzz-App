@@ -34,7 +34,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
-import thecodemonks.org.nottzapp.datastore.UIModePreference
+import thecodemonks.org.nottzapp.datastore.UIModeDataStore
 import thecodemonks.org.nottzapp.db.NotesDatabase
 import javax.inject.Singleton
 
@@ -44,8 +44,8 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun providePreferenceManager(application: Application): UIModePreference {
-        return UIModePreference(application.applicationContext)
+    fun providePreferenceManager(application: Application): UIModeDataStore {
+        return UIModeDataStore(application.applicationContext)
     }
 
     @Singleton

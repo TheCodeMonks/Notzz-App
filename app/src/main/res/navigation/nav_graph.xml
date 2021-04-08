@@ -85,7 +85,7 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="thecodemonks.org.nottzapp.ui.about.AboutFragment"
-        android:label="fragment_about"
+        android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
 
 </navigation>
