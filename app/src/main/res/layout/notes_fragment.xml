@@ -52,10 +52,11 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/dimen_32"
         android:contentDescription="@string/app_name"
+        app:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_baseline_add"
-        app:tint="@android:color/white" />
+        app:tint="@color/white" />
 
     <ViewStub
         android:id="@+id/emptyStateLayout"

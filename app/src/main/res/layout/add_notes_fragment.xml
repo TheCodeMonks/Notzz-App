@@ -47,9 +47,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/dimen_32"
-        android:backgroundTint="@color/colorAccent"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_baseline_check"
-        app:tint="@android:color/white" />
+        app:backgroundTint="@color/colorAccent"
+        app:tint="@color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
