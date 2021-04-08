@@ -29,11 +29,22 @@
 
 package thecodemonks.org.nottzapp.ui.details
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ShareCompat
+import androidx.core.content.ContextCompat
+import androidx.core.view.drawToBitmap
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -42,6 +53,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.databinding.FragmentNotesDetailsBinding
 import thecodemonks.org.nottzapp.ui.notes.NotesViewModel
+import thecodemonks.org.nottzapp.utils.saveBitmap
+import thecodemonks.org.nottzapp.utils.showOrHide
 
 @AndroidEntryPoint
 class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
@@ -52,11 +65,59 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
     private lateinit var _binding: FragmentNotesDetailsBinding
     private val binding get() = _binding
 
+    // handle permission dialog
+    private val requestLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) shareImage() else showErrorDialog()
+        }
+
+    private fun showErrorDialog() = findNavController().navigate(
+        NotesDetailsFragmentDirections.actionNotesDetailsFragmentToErrorDialog(
+            "Image share failed!",
+            "You have to enable storage permission to share transaction as Image"
+        )
+    )
+
+    private fun shareImage() {
+
+        if (!isStoragePermissionGranted()) {
+            requestLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            return
+        }
+
+        // unHide watermark
+        showLogo(true)
+        val imageURI = binding.noteLayout.noteDetailLayout.drawToBitmap().let { bitmap ->
+            // hide watermark
+            showLogo(false)
+            saveBitmap(requireActivity(), bitmap)
+        } ?: run {
+            Toast.makeText(requireContext(), "Error Occured", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val intent = ShareCompat.IntentBuilder(requireActivity())
+            .setType("image/jpeg")
+            .setStream(imageURI)
+            .intent
+
+        startActivity(Intent.createChooser(intent, null))
+    }
+
+    private fun showLogo(isVisible: Boolean) = with(binding) {
+        noteLayout.logo.showOrHide(isVisible)
+    }
+
+    private fun isStoragePermissionGranted(): Boolean = ContextCompat.checkSelfPermission(
+        requireContext(),
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
+    ) == PackageManager.PERMISSION_GRANTED
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = FragmentNotesDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -107,21 +168,13 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
                 true
             }
 
-            R.id.action_share -> {
-                val shareMsg = getString(
-                    R.string.share_message,
-                    args.notes.title,
-                    args.notes.description
-                )
+            R.id.action_share_text -> {
+                shareText()
+                true
+            }
 
-                val intent = ShareCompat.IntentBuilder.from(requireActivity())
-                    .setType("text/plain")
-                    .setText(shareMsg)
-                    .intent
-
-                if (intent.resolveActivity(requireActivity().packageManager) != null) {
-                    startActivity(intent)
-                }
+            R.id.action_share_image -> {
+                shareImage()
                 true
             }
 
@@ -134,5 +187,21 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
             it.titleET.text.toString(),
             it.noteET.text.toString()
         )
+    }
+
+    @SuppressLint("StringFormatMatches")
+    private fun shareText() = with(binding) {
+        val shareMsg = getString(
+            R.string.share_message,
+            args.notes.title,
+            args.notes.description
+        )
+
+        val intent = ShareCompat.IntentBuilder(requireActivity())
+            .setType("text/plain")
+            .setText(shareMsg)
+            .intent
+
+        startActivity(Intent.createChooser(intent, null))
     }
 }

@@ -31,12 +31,13 @@
 <resources>
     <color name="colorPrimary">#121212</color>
     <color name="colorPrimaryDark">#121212</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#ffffff</color>
     <color name="hint_color">#979797</color>
     <color name="card_bg">#222831</color>
     <color name="background">#121212</color>
     <color name="title_text_color">#f2f2f2</color>
     <color name="note_text_color">#f2f2f2</color>
-    <color name="white">#ffffff</color>
+    <color name="white">#000000</color>
+    <color name="black">#ffffff</color>
     <color name="blue">#2F80ED</color>
 </resources>

@@ -106,6 +106,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
+    // activity & fragment ktx
+    implementation "androidx.fragment:fragment-ktx:1.3.2"
+    implementation "androidx.activity:activity-ktx:1.3.0-alpha05"
+    implementation 'androidx.appcompat:appcompat:1.3.0-rc01'
 
     // Navigation Components
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.4"
@@ -117,6 +121,9 @@ dependencies {
 
     // Preference DataStore
     implementation "androidx.datastore:datastore-preferences:1.0.0-alpha06"
+
+    // Lottie Animation Library
+    implementation "com.airbnb.android:lottie:3.6.0"
 
     // Hilt
     implementation "com.google.dagger:hilt-android:2.30.1-alpha"

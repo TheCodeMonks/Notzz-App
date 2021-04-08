@@ -42,7 +42,8 @@
     <string name="undo">Undo</string>
 
     <!-- Details menu -->
-    <string name="text_share">Share</string>
+    <string name="text_share">Share as Text</string>
+    <string name="text_share_image">Share as Image</string>
     <string name="text_delete">Delete</string>
 
     <!-- Share notes -->

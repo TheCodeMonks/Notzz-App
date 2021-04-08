@@ -81,11 +81,27 @@
         <argument
             android:name="notes"
             app:argType="thecodemonks.org.nottzapp.model.Notes" />
+        <action
+            android:id="@+id/action_notesDetailsFragment_to_errorDialog"
+            app:destination="@id/errorDialog" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="thecodemonks.org.nottzapp.ui.about.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
+
+    <dialog
+        android:id="@+id/errorDialog"
+        android:name="thecodemonks.org.nottzapp.ui.dialog.ErrorDialog"
+        android:label="ErrorDialog"
+        tools:layout="@layout/error_dialog_layout">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </dialog>
 
 </navigation>
