@@ -141,10 +141,8 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                 // get item position & delete notes
                 val position = viewHolder.adapterPosition
                 val notes = notesAdapter.differ.currentList[position]
-                viewModel.deleteNotes(
-                    notes.id,
-                    notes.title,
-                    notes.description
+                viewModel.deleteNoteByID(
+                    notes.id
                 )
                 Snackbar.make(
                     binding.root,
