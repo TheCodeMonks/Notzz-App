@@ -163,7 +163,7 @@ class NotesDetailsFragment : Fragment(R.layout.fragment_notes_details) {
         return when (item.itemId) {
 
             R.id.action_delete -> {
-                viewModel.deleteNotes(args.notes.id, args.notes.title, args.notes.description)
+                viewModel.deleteNoteByID(args.notes.id)
                 findNavController().navigateUp()
                 true
             }

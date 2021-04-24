@@ -30,7 +30,12 @@
 package thecodemonks.org.nottzapp.ui.notes
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -173,6 +178,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
 
     private fun showEmptyState() {
         binding.emptyStateLayout.show()
+        notesAdapter.differ.submitList(emptyList())
     }
 
     private fun onNotesLoaded(notes: List<Notes>) {
