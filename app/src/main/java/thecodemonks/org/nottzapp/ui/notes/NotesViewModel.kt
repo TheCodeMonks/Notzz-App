@@ -101,18 +101,7 @@ class NotesViewModel @Inject internal constructor(
         }
     }
 
-    // delete notes
-    fun deleteNotes(taskID: Int, taskName: String, taskDesc: String) = viewModelScope.launch {
-        val notes = Notes(
-            id = taskID,
-            title = taskName,
-            description = taskDesc
-        )
-        notesRepo.deleteNotes(notes)
-    }
-
-
-    // delete notes
+    // delete note by ID
     fun deleteNoteByID(id: Int) = viewModelScope.launch {
         notesRepo.deleteNote(id)
     }

@@ -30,7 +30,6 @@
 package thecodemonks.org.nottzapp.db
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -53,10 +52,7 @@ interface NotesDao {
     @Query("SELECT * FROM notes")
     fun getNotes(): Flow<List<Notes>>
 
-    // delete notes from db
-    @Delete
-    suspend fun deleteNotes(notes: Notes)
-
+    // delete notes by id
     @Query("DELETE FROM notes where id=:id")
     suspend fun deleteNote(id: Int)
 }
