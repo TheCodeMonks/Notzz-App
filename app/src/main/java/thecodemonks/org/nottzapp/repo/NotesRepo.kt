@@ -44,6 +44,6 @@ class NotesRepo @Inject constructor(private val db: NotesDatabase) {
     // get saved notes
     fun getSavedNotes() = db.getNotesDao().getNotes()
 
-    // delete article
-    suspend fun deleteNotes(notes: Notes) = db.getNotesDao().deleteNotes(notes)
+    // delete note by ID
+    suspend fun deleteNote(id: Int) = db.getNotesDao().deleteNote(id)
 }
