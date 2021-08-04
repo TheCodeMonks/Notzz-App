@@ -120,7 +120,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.2.0"
 
     // Preference DataStore
-    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha06"
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 
     // Lottie Animation Library
     implementation "com.airbnb.android:lottie:3.6.0"
