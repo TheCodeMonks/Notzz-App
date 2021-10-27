@@ -42,7 +42,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".app.MainActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

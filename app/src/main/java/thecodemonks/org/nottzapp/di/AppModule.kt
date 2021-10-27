@@ -29,28 +29,30 @@
 
 package thecodemonks.org.nottzapp.di
 
-import android.app.Application
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import thecodemonks.org.nottzapp.datastore.UIModeDataStore
+import thecodemonks.org.nottzapp.datastore.UIModeImpl
 import thecodemonks.org.nottzapp.db.NotesDatabase
 import javax.inject.Singleton
 
-@InstallIn(ActivityComponent::class)
+@InstallIn(SingletonComponent::class)
 @Module
-class AppModule {
+object AppModule {
 
     @Singleton
     @Provides
-    fun providePreferenceManager(application: Application): UIModeDataStore {
-        return UIModeDataStore(application.applicationContext)
+    fun providePreferenceManager(@ApplicationContext context: Context): UIModeImpl {
+        return UIModeDataStore(context)
     }
 
     @Singleton
     @Provides
-    fun provideNoteDatabase(application: Application): NotesDatabase {
-        return NotesDatabase.invoke(application.applicationContext)
+    fun provideNoteDatabase(@ApplicationContext context: Context): NotesDatabase {
+        return NotesDatabase.invoke(context)
     }
 }
