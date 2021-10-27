@@ -38,11 +38,10 @@ import thecodemonks.org.nottzapp.model.Notes
 @Database(
     entities = [Notes::class],
     version = 1,
-    exportSchema = false
+    exportSchema = true
 )
 
 abstract class NotesDatabase : RoomDatabase() {
-
     abstract fun getNotesDao(): NotesDao
 
     companion object {
