@@ -28,7 +28,7 @@
   -->
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Nottz App</string>
+    <string name="app_name">Notes</string>
 
     <string name="title_hint">Title</string>
     <string name="desc_hint" tools:ignore="TypographyEllipsis">Type something...</string>
