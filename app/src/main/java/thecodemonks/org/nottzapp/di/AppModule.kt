@@ -30,6 +30,7 @@
 package thecodemonks.org.nottzapp.di
 
 import android.content.Context
+import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,6 +38,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import thecodemonks.org.nottzapp.datastore.UIModeDataStore
 import thecodemonks.org.nottzapp.datastore.UIModeImpl
+import thecodemonks.org.nottzapp.db.NotesDao
 import thecodemonks.org.nottzapp.db.NotesDatabase
 import javax.inject.Singleton
 
@@ -52,7 +54,14 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideNoteDatabase(@ApplicationContext context: Context): NotesDatabase {
-        return NotesDatabase.invoke(context)
-    }
+    fun provideTaskDao(database: NotesDatabase): NotesDao = database.getNotesDao()
+
+    @Singleton
+    @Provides
+    fun provideNoteDatabase(@ApplicationContext context: Context): NotesDatabase =
+        Room.databaseBuilder(
+            context,
+            NotesDatabase::class.java,
+            "notes_db.db"
+        ).fallbackToDestructiveMigration().build()
 }

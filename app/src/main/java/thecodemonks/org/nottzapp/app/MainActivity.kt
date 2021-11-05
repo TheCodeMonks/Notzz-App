@@ -38,18 +38,20 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import thecodemonks.org.nottzapp.R
 import thecodemonks.org.nottzapp.databinding.ActivityMainBinding
-import thecodemonks.org.nottzapp.db.NotesDatabase
 import thecodemonks.org.nottzapp.repo.NotesRepo
 import thecodemonks.org.nottzapp.ui.notes.NotesViewModel
 import thecodemonks.org.nottzapp.utils.factory.viewModelFactory
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private val newsRepository by lazy { NotesRepo(NotesDatabase(this)) }
+
+    @Inject
+    lateinit var repo: NotesRepo
     private val viewModel: NotesViewModel by viewModels {
-        viewModelFactory { NotesViewModel(this.application, newsRepository) }
+        viewModelFactory { NotesViewModel(this.application, repo) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
