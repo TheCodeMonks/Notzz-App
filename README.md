@@ -7,7 +7,7 @@
 
 ***Try latest Notzz app apk from below 👇***
 
-[![Notzz-App](https://img.shields.io/badge/NotzzApp🌈-APK-black.svg?style=for-the-badge&logo=android)](https://github.com/TheCodeMonks/Notzz-App/releases/download/v1.3/Notzz.apk)
+[![Notzz-App](https://img.shields.io/badge/NotzzApp🌈-APK-black.svg?style=for-the-badge&logo=android)](https://github.com/TheCodeMonks/Notzz-App/releases/download/v1.4/Notzz.apk)
 
 
 
