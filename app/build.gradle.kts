@@ -43,7 +43,7 @@ android {
         applicationId = "thecodemonks.org.nottzapp"
         minSdk = 21
         targetSdk = 31
-        versionCode = 1
+        versionCode = 4
         versionName = "1.4.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
