@@ -33,8 +33,8 @@
     <color name="colorPrimaryDark">#121212</color>
     <color name="colorAccent">#ffffff</color>
     <color name="hint_color">#979797</color>
-    <color name="card_bg">#222831</color>
-    <color name="background">#121212</color>
+    <color name="card_bg">#2A2A2A</color>
+    <color name="background">#1A1A1A</color>
     <color name="title_text_color">#f2f2f2</color>
     <color name="note_text_color">#f2f2f2</color>
     <color name="white">#000000</color>
