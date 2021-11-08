@@ -46,5 +46,8 @@
         </item>
     </style>
 
+    <style name="ToolbarTheme">
+        <item name="android:fontFamily">@font/work_sans_bold</item>
+    </style>
 
 </resources>
