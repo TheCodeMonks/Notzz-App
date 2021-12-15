@@ -97,7 +97,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
 
     // Room
-    implementation("androidx.room:room-runtime:2.3.0")
+    implementation("androidx.room:room-runtime:2.4.0")
     kapt("androidx.room:room-compiler:2.3.0")
     kapt("org.xerial:sqlite-jdbc:3.36.0.3")
 
