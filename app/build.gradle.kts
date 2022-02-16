@@ -135,6 +135,6 @@ dependencies {
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.39.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.39.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.41")
     kapt("androidx.hilt:hilt-compiler:1.0.0")
 }
