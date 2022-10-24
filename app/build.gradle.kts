@@ -115,7 +115,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 
     // activity & fragment ktx
-    implementation("androidx.fragment:fragment-ktx:1.3.6")
+    implementation("androidx.fragment:fragment-ktx:1.5.4")
     implementation("androidx.activity:activity-ktx:1.4.0-rc01")
     implementation("androidx.appcompat:appcompat:1.4.0-beta01")
 
