@@ -131,7 +131,7 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     // Lottie Animation Library
-    implementation("com.airbnb.android:lottie:4.2.0")
+    implementation("com.airbnb.android:lottie:6.0.0")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.39.1")
